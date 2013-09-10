@@ -91,10 +91,10 @@ class MoneyPatched(Money):
     def __use_l10n(self):
         'Return boolean'
 
-        if self.use_l10n == True:
+        if self.use_l10n:
             return True
 
-        if self.use_l10n == False:
+        if not self.use_l10n:
             return False
 
         return settings.USE_L10N

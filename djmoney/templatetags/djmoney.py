@@ -71,14 +71,14 @@ class MoneyLocalizeNode(template.Node):
         amount = self.amount.resolve(context) if self.amount else None
         currency = self.currency.resolve(context) if self.currency else None
 
-        if money != None:
+        if money is not None:
             if isinstance(money, Money):
                 money = MoneyPatched._patch_to_current_class(money)
             else:
                 raise TemplateSyntaxError('The variable "money" must be an '
                                           'instance of Money.')
 
-        elif amount != None and currency != None:
+        elif amount is not None and currency is not None:
             money = MoneyPatched(float(amount), str(currency))
         else:
             raise TemplateSyntaxError('You must define both variables: '
